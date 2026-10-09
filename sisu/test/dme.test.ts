@@ -164,4 +164,20 @@ describe("DME tests", () => {
       { speaker: "sys", message: "Sorry, I don't understand." },
     ]);
   });
+
+  describe("negative understanding feedback2", () => {
+    runTest([
+      { speaker: "sys", message: "Hello! You can ask me anything!" },
+      { speaker: "usr", message: "jsndnsdnas" },
+      { speaker: "sys", message: "Sorry, I don't understand." },
+      { speaker: "usr", message: "Where is the lecture?" },
+      { speaker: "sys", message: "Which day?" },
+      { speaker: "usr", message: "jsajnandasn" },
+      { speaker: "sys", message: "Sorry, I don't understand. Which day?" },
+      { speaker: "usr", message: "Tuesday" },
+      { speaker: "sys", message: "Which course?" },
+      { speaker: "usr", message: "Dialogue Systems 2" },
+      { speaker: "sys", message: "The lecture is in J440." },
+    ]);
+  });
 });
