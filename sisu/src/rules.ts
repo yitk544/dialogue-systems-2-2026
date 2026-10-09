@@ -330,4 +330,16 @@ export const rules: Rules = {
       });
     }
   },
+  select_icm_sem_neg: ({ is }) => {
+    if (is.shared.lu && is.shared.lu.speaker === "usr") {
+      const moves = is.shared.lu.moves;
+      if (Array.isArray(moves) && moves.length === 0) {
+        const icmMove: Move = { type: "icm", content: "sem*neg" };
+        return () => ({
+          ...is,
+          next_moves: [...is.next_moves, icmMove],
+        });
+      }
+    }
+  },
 };

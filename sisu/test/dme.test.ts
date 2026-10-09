@@ -156,4 +156,12 @@ describe("DME tests", () => {
       { speaker: "sys", message: "The lecture is in J440." },
     ]);
   });
+
+  describe("negative understanding feedback", () => {
+    runTest([
+      { speaker: "sys", message: "Hello! You can ask me anything!" },
+      { speaker: "usr", message: "eksncksnakscns" },
+      { speaker: "sys", message: "Sorry, I don't understand." },
+    ]);
+  });
 });
