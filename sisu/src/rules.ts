@@ -69,18 +69,24 @@ export const rules: Rules = {
       for (const move of is.shared.lu!.moves) {
         if (move.type === "ask") {
           const q = move.content;
+          // open stack: remove q if it is already on qud
+          const newQud: Question[] = [];
+          for (const oldQ of is.shared.qud) {
+            if (!objectsEqual(oldQ, q)) {
+              newQud.push(oldQ);
+            }
+          }
           return () => ({
             ...is,
             shared: {
               ...is.shared,
-              qud: [q, ...is.shared.qud],
+              qud: [q, ...newQud],
             },
           });
         }
       }
     }
   },
-
   /** rule 2.3 */
   integrate_usr_ask: ({ is }) => {
     if (is.shared.lu!.speaker === "usr") {
